@@ -1,0 +1,44 @@
+﻿@model BirthdayCard.Models.CardContents
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<head>
+    <title>Birthday Card Sender</title>
+</head>
+
+@using (Html.BeginForm())
+{
+    <link href="~/Content/bootstrap.css" rel="stylesheet"/>
+    <style>
+        body {
+            width: 350px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        h2 {
+            color: grey;
+            background-color: black;
+            padding-bottom: 20px;
+            width: 350px;
+        }
+    </style>
+    <div>
+        <h2>Birthday Card Generator</h2>
+    </div>
+    <h1>Send a Birthday Card</h1>
+    @Html.ValidationSummary()
+    <div class="form-group col-lg-12">
+        <p>@Html.TextBoxFor(t => t.From, new { @class = "form-control input-lg", @placeholder = "From:"})</p>
+    </div>
+    <div class="form-group col-lg-12">
+        <p>@Html.TextBoxFor(t => t.To, new { @class = "form-control input-lg", @placeholder = "To:" })</p>
+    </div>
+    <div class="form-group col-lg-12">
+        <p>@Html.TextBoxFor(t => t.Message, new { @class = "form-control input-lg", @placeholder = "Message:" })</p>
+    </div>
+    <input class="btn btn-success btn-lg" type="submit" value="Submit Card"/>
+}

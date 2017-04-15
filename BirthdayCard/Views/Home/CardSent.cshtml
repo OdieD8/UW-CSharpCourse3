@@ -1,0 +1,54 @@
+﻿@model BirthdayCard.Models.CardContents
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<head>
+    <title>Birthday Card Sender</title>
+</head>
+
+@using (Html.BeginForm())
+{
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <style>
+        body {
+            width: 350px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h2 {
+            color: grey;
+            background-color: black;
+            padding-bottom: 20px;
+            width: 350px;
+        }
+
+        p {
+            font-size: 20px;
+        }
+
+        .responseText {
+            color: darkgoldenrod;
+            text-align: left;
+        }
+    </style>
+    <div>
+        <h2>Birthday Card Generator</h2>
+    </div>
+    <h1>Birthday Card Sent</h1>
+    <div class="responseText">
+        <div class="form-group col-lg-12">
+            <p><label>From: @Model.From</label></p>
+        </div>
+        <div class="form-group col-lg-12">
+            <p><label>To: @Model.To</label></p>
+        </div>
+        <div class="form-group col-lg-12">
+            <p><label>Message: @Model.Message</label></p>
+        </div>
+    </div>
+}
