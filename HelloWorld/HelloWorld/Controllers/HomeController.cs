@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using HelloWorld.Models;
-using System.Linq;
 
 namespace HelloWorld.Controllers
 {
@@ -19,8 +18,9 @@ namespace HelloWorld.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            int x = 1;  // add me
-            x = x / (x - 1); // add me
+            // Error checking
+            //int x = 1;
+            //x = x / (x - 1);
             return View();
         }
 

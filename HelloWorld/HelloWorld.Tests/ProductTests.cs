@@ -2,6 +2,7 @@
 using HelloWorld.Models;
 using HelloWorld.Controllers;
 using Moq;
+using System.Linq;
 
 namespace HelloWorld.Tests
 {
@@ -38,6 +39,10 @@ namespace HelloWorld.Tests
 
             Assert.AreEqual(3, greaterThanTen);
             Assert.AreEqual(2, lessThanTen);
+
+            // Using Linq
+            Assert.AreEqual(3, products.Where(p => p.Price > 10).Count());
+            Assert.AreEqual(2, products.Where(p => p.Price < 10).Count());
         }
 
         [TestMethod]
