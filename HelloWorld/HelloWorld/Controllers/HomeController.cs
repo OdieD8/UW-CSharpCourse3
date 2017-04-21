@@ -4,9 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using HelloWorld.Models;
+using System.Web.UI;
 
 namespace HelloWorld.Controllers
 {
+    [AuthorizeIPAddress]
+    [Logging]
     public class HomeController : Controller
     {
         //catches exception in controller
@@ -75,6 +78,7 @@ namespace HelloWorld.Controllers
             return View(productRepository.Products.First());
         }
 
+        //[OutputCache(Duration = 15, Location = OutputCacheLocation.Any, VaryByParam = "none")]
         public ActionResult Products()
         {
             return View(productRepository.Products);
@@ -85,6 +89,46 @@ namespace HelloWorld.Controllers
         public HomeController(IProductRepository productRepository)
         {
             this.productRepository = productRepository;
+        }
+
+        public PartialViewResult IncrementCount()
+        {
+            int count = 0;
+
+            // Check if MyCount exists
+            if (Session["MyCount"] != null)
+            {
+                count = (int)Session["MyCount"];
+                count++;
+            }
+
+            // Create the MyCount session variable
+            Session["MyCount"] = count;
+
+            return new PartialViewResult();
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public ActionResult Login(Models.LoginModel loginModel)
+        {
+            Session["UserName"] = loginModel.UserName;
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Logoff()
+        {
+            Session["UserName"] = null;
+            return RedirectToAction("Index");
+        }
+
+        public PartialViewResult DisplayLoginName()
+        {
+            return new PartialViewResult();
         }
     }
 }

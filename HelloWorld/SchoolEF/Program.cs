@@ -22,6 +22,20 @@ namespace SchoolEF
 
             Console.Write("Done.");
             Console.ReadLine();
+
+            foreach (var user in school.Users)
+            {
+                Console.WriteLine("{0}", user.UserName);
+
+                foreach (var classMaster in user.ClassMasters)
+                {
+                    Console.WriteLine("\tClassId: {0} ClassName: {1}", classMaster.ClassId, classMaster.ClassName);
+                }
+                Console.WriteLine();
+            }
+
+            Console.Write("Done.");
+            Console.ReadLine();
         }
     }
 }
