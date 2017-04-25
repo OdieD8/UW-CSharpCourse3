@@ -8,8 +8,8 @@ using System.Web.UI;
 
 namespace HelloWorld.Controllers
 {
-    [AuthorizeIPAddress]
-    [Logging]
+    //[AuthorizeIPAddress]
+    //[Logging]
     public class HomeController : Controller
     {
         //catches exception in controller
@@ -129,6 +129,35 @@ namespace HelloWorld.Controllers
         public PartialViewResult DisplayLoginName()
         {
             return new PartialViewResult();
+        }
+
+        public ActionResult SetCookie()
+        {
+            //Name the cookis as MyCookis for later retrieval
+            var cookie = new HttpCookie("MyCookie");
+
+            // This cookie will expire about one minute, depends on the browser
+            cookie.Expires = DateTime.Now.AddMinutes(1);
+
+            // This cookie will have a simple string value of myUserName
+            // but it can be any kind of object.
+            cookie.Value = "myUserName";
+
+            // Add the cookie to the response to send it to the browser
+            HttpContext.Response.Cookies.Add(cookie);
+
+            return View(cookie);
+        }
+
+        public ActionResult GetCookie()
+        {
+            return View(HttpContext.Request.Cookies["MyCookie"]);
+        }
+
+        [Authorize]
+        public ActionResult Notes()
+        {
+            return View();
         }
     }
 }

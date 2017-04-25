@@ -37,18 +37,18 @@ namespace HelloWorld
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
 
-        protected void Application_Error()
-        {
-            var exception = Server.GetLastError();
+        //protected void Application_Error()
+        //{
+        //    var exception = Server.GetLastError();
 
-            Server.ClearError();
+        //    Server.ClearError();
 
-            var routeData = new RouteData();
-            routeData.Values.Add("controller", "Error");
-            routeData.Values.Add("action", "Error");
+        //    var routeData = new RouteData();
+        //    routeData.Values.Add("controller", "Error");
+        //    routeData.Values.Add("action", "Error");
 
-            IController errorController = new Controllers.ErrorController();
-            errorController.Execute(new RequestContext(new HttpContextWrapper(Context), routeData));
-        }
+        //    IController errorController = new Controllers.ErrorController();
+        //    errorController.Execute(new RequestContext(new HttpContextWrapper(Context), routeData));
+        //}
     }
 }
