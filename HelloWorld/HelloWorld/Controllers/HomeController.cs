@@ -155,6 +155,7 @@ namespace HelloWorld.Controllers
         }
 
         [Authorize]
+        [IsAdministrator]
         public ActionResult Notes()
         {
             return View();
