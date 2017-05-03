@@ -15,8 +15,6 @@ namespace TheLearningCenter.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
@@ -38,6 +36,11 @@ namespace TheLearningCenter.Controllers
         }
 
         public ActionResult Enroll()
+        {
+            return View();
+        }
+
+        public ActionResult LearnMore()
         {
             return View();
         }

@@ -1,0 +1,23 @@
+﻿@model LearningCenter.Models.User
+@{
+    ViewBag.Title = "Registration";
+}
+
+<div style="text-align:center">
+    <h2>Register</h2>
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @using (Html.BeginForm())
+    {
+        @Html.LabelFor(u => u.UserEmail)<br />
+        @Html.TextBoxFor(u => u.UserEmail)<br />
+        @Html.LabelFor(u => u.UserPassword)<br />
+        @Html.PasswordFor(u => u.UserPassword)<br />
+        @*@Html.LabelFor(u => u.ConfirmPassword)<br/>
+        @Html.PasswordFor(u => u.ConfirmPassword)<br/>*@
+
+        <br />
+        <input type="submit" value="Register" class="btn btn-default" />
+    }
+</div>
