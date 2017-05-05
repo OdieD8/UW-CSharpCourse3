@@ -5,11 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="c3fb11c5bf2f405aa5423cf1d17ccea1" Name="Diagram1">
-        <EntityTypeShape EntityType="LearningCenterModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LearningCenterModel.Class" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="LearningCenterModel.User" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="LearningCenterModel.User1" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <AssociationConnector Association="LearningCenterModel.UserClass" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="LearningCenterModel.Class" Width="1.5" PointX="0.75" PointY="0.875" />
+        <EntityTypeShape EntityType="LearningCenterModel.User" Width="1.5" PointX="3" PointY="0.875" />
+        <AssociationConnector Association="LearningCenterModel.UserClass" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

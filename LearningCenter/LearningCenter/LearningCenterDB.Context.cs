@@ -25,9 +25,7 @@ namespace LearningCenter
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<Class> Classes { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<User1> Users1 { get; set; }
     }
 }

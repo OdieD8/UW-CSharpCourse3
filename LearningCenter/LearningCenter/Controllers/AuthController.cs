@@ -20,22 +20,32 @@ namespace LearningCenter.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(User model)
+        public ActionResult Login(LearningCenter.Models.User model)
         {
-            if (!ModelState.IsValid)
+            using (var db = new MainDbContext())
             {
-                return View(model);
-            }
+                var emailCheck = db.User.FirstOrDefault(u => u.UserEmail == model.UserEmail);
+                var getPassword = db.User.Where(u => u.UserEmail == model.UserEmail).Select(u => u.UserPassword);
+                var materializePassword = getPassword.ToList();
+                var password = materializePassword[0];
+                var decryptedPassword = CustomDecrypt.Decrypt(password);
 
-            if (model.UserEmail == "admin@admin.com" && model.UserPassword == "123456")
-            {
-                var identity = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, "FirstName"), new Claim(ClaimTypes.Email, "Email") }, "ApplicationCookie");
-                var ctx = Request.GetOwinContext();
-                var authManager = ctx.Authentication;
+                if (model.UserEmail != null && model.UserPassword == decryptedPassword)
+                {
+                    var getEmail = db.User.Where(u => u.UserEmail == model.UserEmail).Select(u => u.UserEmail);
+                    var materializeEmail = getEmail.ToList();
+                    var email = materializeEmail[0];
 
-                authManager.SignIn(identity);
+                    var identity = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, email) }, "ApplicationCookie");
+                    Session["User"] = identity.Name;
 
-                return RedirectToAction("Index", "Home");
+                    var ctx = Request.GetOwinContext();
+                    var authManager = ctx.Authentication;
+
+                    authManager.SignIn(identity);
+
+                    return RedirectToAction("Index", "Home");
+                }
             }
 
             ModelState.AddModelError("", "Invalid Email or Password");
@@ -44,6 +54,7 @@ namespace LearningCenter.Controllers
 
         public ActionResult Logout()
         {
+            Session["User"] = null;
             var ctx = Request.GetOwinContext();
             var authManager = ctx.Authentication;
 
@@ -57,7 +68,7 @@ namespace LearningCenter.Controllers
         }
 
         [HttpPost]
-        public ActionResult Registration(User model)
+        public ActionResult Registration(LearningCenter.Models.User model)
         {
             if (ModelState.IsValid)
             {

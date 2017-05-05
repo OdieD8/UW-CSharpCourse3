@@ -19,11 +19,13 @@ namespace LearningCenter.Models
         [DataType(DataType.Password)]
         public string UserPassword { get; set; }
 
-        public bool UserIsAdmin { get; set; }
-
         //[DataType(DataType.Password)]
         //[Display(Name = "Confirm password")]
         //[Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         //public string ConfirmPassword { get; set; }
+
+        public bool UserIsAdmin { get; set; }
+
+        public virtual ICollection<Class> Classes { get; set; }
     }
 }
