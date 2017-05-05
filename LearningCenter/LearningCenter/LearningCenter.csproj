@@ -230,6 +230,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="CustomLibraries\CustomDecrypt.cs" />
     <Compile Include="CustomLibraries\CustomEncrypt.cs" />
+    <Compile Include="C__MigrationHistory.cs">
+      <DependentUpon>LearningCenterDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -273,6 +276,8 @@
     <Content Include="Views\Home\LearnMore.cshtml" />
     <Content Include="Views\Classes\ClassList.cshtml" />
     <Content Include="Views\Classes\Enroll.cshtml" />
+    <Content Include="Views\Classes\EnrolledClasses.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

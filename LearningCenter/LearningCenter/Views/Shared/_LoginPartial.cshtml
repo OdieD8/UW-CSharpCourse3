@@ -5,7 +5,7 @@
 {
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink("Hello " + HttpContext.Current.Session["User"] + "!", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Hello " + User.Identity.Name + "!", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         </li>
         <li><a href="@Url.Action("Logout", "Auth")">Logout</a></li>
     </ul>

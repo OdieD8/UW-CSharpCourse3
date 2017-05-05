@@ -12,6 +12,8 @@ namespace LearningCenter.Controllers
     [AllowAnonymous]
     public class AuthController : Controller
     {
+        public string currentUserCookie { get; set; }
+
         // GET: Auth
         [HttpGet]
         public ActionResult Login()
@@ -20,24 +22,25 @@ namespace LearningCenter.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(LearningCenter.Models.User model)
+        public ActionResult Login(Models.User model)
         {
             using (var db = new MainDbContext())
             {
-                var emailCheck = db.User.FirstOrDefault(u => u.UserEmail == model.UserEmail);
-                var getPassword = db.User.Where(u => u.UserEmail == model.UserEmail).Select(u => u.UserPassword);
+                var emailCheck = db.UserDbContext.FirstOrDefault(u => u.UserEmail == model.Email);
+                var getPassword = db.UserDbContext.Where(u => u.UserEmail == model.Email).Select(u => u.UserPassword);
                 var materializePassword = getPassword.ToList();
                 var password = materializePassword[0];
                 var decryptedPassword = CustomDecrypt.Decrypt(password);
 
-                if (model.UserEmail != null && model.UserPassword == decryptedPassword)
+                if (model.Email != null && model.Password == decryptedPassword)
                 {
-                    var getEmail = db.User.Where(u => u.UserEmail == model.UserEmail).Select(u => u.UserEmail);
+                    var getEmail = db.UserDbContext.Where(u => u.UserEmail == model.Email).Select(u => u.UserEmail);
                     var materializeEmail = getEmail.ToList();
                     var email = materializeEmail[0];
 
                     var identity = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, email) }, "ApplicationCookie");
                     Session["User"] = identity.Name;
+                    currentUserCookie = identity.Name;
 
                     var ctx = Request.GetOwinContext();
                     var authManager = ctx.Authentication;
@@ -59,7 +62,7 @@ namespace LearningCenter.Controllers
             var authManager = ctx.Authentication;
 
             authManager.SignOut("ApplicationCookie");
-            return RedirectToAction("Login", "Auth");
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Registration()
@@ -68,25 +71,27 @@ namespace LearningCenter.Controllers
         }
 
         [HttpPost]
-        public ActionResult Registration(LearningCenter.Models.User model)
+        public ActionResult Registration(Models.User model)
         {
             if (ModelState.IsValid)
             {
                 using (var db = new MainDbContext())
                 {
-                    var encryptedPassword = CustomEnrypt.Encrypt(model.UserPassword);
-                    var user = db.User.Create();
-                    user.UserEmail = model.UserEmail;
+                    var encryptedPassword = CustomEnrypt.Encrypt(model.Password);
+                    var user = db.UserDbContext.Create();
+                    user.UserEmail = model.Email;
                     user.UserPassword = encryptedPassword;
-                    db.User.Add(user);
+                    db.UserDbContext.Add(user);
                     db.SaveChanges();
                 }
+                return RedirectToAction("Login", "Auth");
             }
             else
             {
-                ModelState.AddModelError("", "Missing Registration Information");
+                ModelState.AddModelError("", "Missing Registration Information or Password Mismatch");
+                return View(model);
             }
-            return View();
+            
         }
     }
 }

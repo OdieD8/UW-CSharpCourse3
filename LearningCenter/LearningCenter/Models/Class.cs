@@ -11,17 +11,17 @@ namespace LearningCenter.Models
     public class Class
     {
         [Key]
-        public int ClassId { get; set; }
-        public string ClassName { get; set; }
-        public string ClassDescription { get; set; }
-        public decimal ClassPrice { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
 
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<User> UsersList { get; set; }
 
         [NotMapped]
         public IEnumerable<SelectListItem> Classes { get; set; }
 
         [NotMapped]
-        public string SelectedClass { get; set; }
+        public List<string> SelectedClass { get; set; }
     }
 }

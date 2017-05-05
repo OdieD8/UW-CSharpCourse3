@@ -13,8 +13,8 @@ namespace LearningCenter
         {
         }
 
-        public DbSet<User> User { get; set; }
+        public DbSet<User> UserDbContext { get; set; }
 
-        public DbSet<Class> Class { get; set; }
+        public DbSet<Class> ClassDbContext { get; set; }
     }
 }

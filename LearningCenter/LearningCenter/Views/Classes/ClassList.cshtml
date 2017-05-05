@@ -1,14 +1,11 @@
-﻿@model List<LearningCenter.Class>
+﻿@model List<Class>
 
 @{
     ViewBag.Title = "ClassList";
 }
 
-<h2>ClassList</h2>
+<h2>Class List</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table" style="text-align:left">
     <tr>
         <th>Class Name</th>
@@ -16,7 +13,8 @@
         <th>Class Price</th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.ClassName)
@@ -25,9 +23,8 @@
             @Html.DisplayFor(modelItem => item.ClassDescription)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ClassPrice)
+            $@Html.DisplayFor(modelItem => item.ClassPrice)
         </td>
     </tr>
 }
-
 </table>

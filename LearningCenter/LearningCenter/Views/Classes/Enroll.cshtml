@@ -9,12 +9,12 @@
 @using (Html.BeginForm())
 {
 <div style="text-align:center">
+    @Html.ValidationSummary(true, "", new { @style = "color:red; text-align:center; list-style-position: inside;" })
     <div>
         @Html.DropDownListFor(m => m.SelectedClass, Model.Classes, "Select", new { style = "width: 175px; height: 35px; font-size:20px;" })
     </div>
     <br/>
     <div>
-        @*<input type="submit" value="Add Class" class="btn btn-primary btn-lg"/>*@
         <button type="submit" class="btn btn-primary btn-lg">Add Class</button>
     </div>
 </div>

@@ -6,8 +6,9 @@
     <edmx:Diagrams>
       <Diagram DiagramId="c3fb11c5bf2f405aa5423cf1d17ccea1" Name="Diagram1">
         <EntityTypeShape EntityType="LearningCenterModel.Class" Width="1.5" PointX="0.75" PointY="0.875" />
-        <EntityTypeShape EntityType="LearningCenterModel.User" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="LearningCenterModel.User" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="LearningCenterModel.UserClass" />
+        <EntityTypeShape EntityType="LearningCenterModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

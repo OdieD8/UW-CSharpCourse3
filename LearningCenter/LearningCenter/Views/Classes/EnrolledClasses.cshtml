@@ -1,0 +1,32 @@
+﻿@model List<User>
+
+@{
+    ViewBag.Title = "EnrolledClasses";
+}
+
+<h2>Enrolled Classes</h2>
+
+<table class="table" style="text-align:left">
+    <tr>
+        <th>Class Name</th>
+        <th>Class Description</th>
+        <th>Class Price</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        foreach (var userClass in item.Classes)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => userClass.ClassName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => userClass.ClassDescription)
+            </td>
+            <td>
+                $@Html.DisplayFor(modelItem => userClass.ClassPrice)
+            </td>
+        </tr>
+        }
+    }
+</table>
