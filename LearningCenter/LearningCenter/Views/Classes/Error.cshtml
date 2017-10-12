@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Error";
+}
+@if (null != TempData["errorMessage"])
+{
+    <script type="text/javascript">
+        window.location.href = "/Classes/Enroll";
+        alert('@TempData["errorMessage"]');
+    </script>
+}
+

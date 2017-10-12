@@ -4,20 +4,20 @@
 }
 
 <div style="text-align:center">
-    <h2>Register</h2>
+    <h1>Register</h1>
 
     @Html.ValidationSummary(true, "", new { @style = "color:red; text-align:center; list-style-position: inside;" })
 
     @using (Html.BeginForm())
     {
-        @Html.LabelFor(u => u.Email)<br />
-        @Html.TextBoxFor(u => u.Email)<br />
-        @Html.LabelFor(u => u.Password)<br />
-        @Html.PasswordFor(u => u.Password)<br />
-        @Html.LabelFor(u => u.ConfirmPassword)<br/>
-        @Html.PasswordFor(u => u.ConfirmPassword)<br/>
+        @Html.LabelFor(u => u.Email, new { @style = "font-size:20px;" })<br/>
+        @Html.TextBoxFor(u => u.Email, new { @style = "text-align:center; width:300px; height:50px; font-size:18px;" })<br/>
+        @Html.LabelFor(u => u.Password, new { @style = "font-size:20px;" })<br />
+        @Html.PasswordFor(u => u.Password, new { @style = "text-align:center; width:300px; height:50px; font-size:18px;" })<br/>
+        @Html.LabelFor(u => u.ConfirmPassword, new { @style = "font-size:20px;" })<br/>
+        @Html.PasswordFor(u => u.ConfirmPassword, new { @style = "text-align:center; width:300px; height:50px; font-size:18px;" })<br/>
 
         <br />
-        <input type="submit" value="Register" class="btn btn-default" />
+        <input type="submit" value="Register" class="btn btn-primary btn-lg"/>
     }
 </div>

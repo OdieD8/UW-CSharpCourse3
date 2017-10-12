@@ -278,6 +278,7 @@
     <Content Include="Views\Classes\Enroll.cshtml" />
     <Content Include="Views\Classes\EnrolledClasses.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Classes\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

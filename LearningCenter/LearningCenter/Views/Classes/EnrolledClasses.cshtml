@@ -11,6 +11,7 @@
         <th>Class Name</th>
         <th>Class Description</th>
         <th>Class Price</th>
+        <th></th>
     </tr>
     @foreach (var item in Model)
     {
@@ -26,7 +27,15 @@
             <td>
                 $@Html.DisplayFor(modelItem => userClass.ClassPrice)
             </td>
+            @using (Html.BeginForm("EnrolledClasses", "Classes", FormMethod.Post))
+            {
+            <td>
+                <input type="text" hidden="true" name="classId" value=@userClass.ClassId/>
+                <input class="button btn-danger" id="submit" type="submit" value="Drop Class" onclick="return confirm('Are you sure you want to drop this class?')"/>
+            </td>
+            }
         </tr>
         }
     }
 </table>
+<input class="=buton btn-primary btn-lg" id="submit" type="submit" value="Enroll In Another Class" onclick="return window.location.href = '/Classes/Enroll';" />
