@@ -3,17 +3,15 @@
 
 @if (@User.Identity.IsAuthenticated)
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hello " + User.Identity.Name + "!", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-        </li>
-        <li><a href="@Url.Action("Logout", "Auth")">Logout</a></li>
+    <ul class="nav navbar-nav navbar-right" style="margin: 0px 5px;">
+        <li>@Html.ActionLink("Hello " + User.Identity.Name + "!", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+        <li style="font-size: 17px; font-weight: bold;"><a href="@Url.Action("Logout", "Auth")">Logout</a></li>
     </ul>
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Login", "Login", "Auth", new { area = "" }, new { @class = "navbar-brand" })</li>
-        <li>@Html.ActionLink("Register", "Registration", "Auth", new { area = "" }, new { @class = "navbar-brand" })</li>
+    <ul class="nav navbar-nav navbar-right" style="margin: 0px 5px;">
+        <li style="margin: 0px 8px;">@Html.ActionLink("Login", "Login", "Auth", new { area = "" }, new { @class = "navbar-brand" })</li>
+        <li style="margin: 0px 2px 0px 8px;">@Html.ActionLink("Register", "Registration", "Auth", new { area = "" }, new { @class = "navbar-brand" })</li>
     </ul>
 }

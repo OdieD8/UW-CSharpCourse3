@@ -9,7 +9,7 @@
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-nav navbar-fixed-top" style="background-color:lightsalmon; padding: 0px;">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,13 +17,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Learning Center", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <p class="navbar-brand" style="font-size: 30px; margin: 0 auto;"><b>Learning Center</b></p>
+                @*@Html.ActionLink("Learning Center", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { style = "font-size: 20px; font-weight: bold;" })</li>
+                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { style = "font-size: 20px; font-weight: bold;" })</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { style = "font-size: 20px; font-weight: bold;" })</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
