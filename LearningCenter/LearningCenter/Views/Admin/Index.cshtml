@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<div class="jumbotron" style="background-color:#9d9d9d">
+    <h1 style="color:black">The Learning Center</h1>
+    <p class="lead" style="color:black">The place for technology classes</p>
+    <p><a href="~/Home/LearnMore" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Manage Classes", "ClassList", "Classes")</h2>
+        <p>Add, update, or remove classes and pricing</p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Manage Enrolled Students", "EnrolledClasses", "Classes")</h2>
+        <p>Enroll and drop students from classes</p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Manage Users", "Enroll", "Classes")</h2>
+        <p>Add, update, or remove user access</p>
+    </div>
+</div>

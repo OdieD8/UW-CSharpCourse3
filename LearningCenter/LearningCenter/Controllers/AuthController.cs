@@ -29,12 +29,18 @@ namespace LearningCenter.Controllers
                 var emailCheck = db.UserDbContext.FirstOrDefault(u => u.UserEmail == model.Email);
                 var getPassword = db.UserDbContext.Where(u => u.UserEmail == model.Email).Select(u => u.UserPassword);
                 var materializePassword = getPassword.ToList();
+                if (emailCheck == null || materializePassword.Count == 0)
+                {
+                    ModelState.AddModelError("", "Invalid Email or Password");
+                    return View(model);
+                }
                 var password = materializePassword[0];
                 var decryptedPassword = CustomDecrypt.Decrypt(password);
 
                 if (model.Email != null && model.Password == decryptedPassword)
                 {
                     var getEmail = db.UserDbContext.Where(u => u.UserEmail == model.Email).Select(u => u.UserEmail);
+                    model.IsAdmin = db.UserDbContext.Where(u => u.UserEmail == model.Email).Select(u => u.UserIsAdmin).FirstOrDefault();
                     var materializeEmail = getEmail.ToList();
                     var email = materializeEmail[0];
 
@@ -47,11 +53,14 @@ namespace LearningCenter.Controllers
 
                     authManager.SignIn(identity);
 
+                    if (model.IsAdmin == true)
+                    {
+                        TempData["IsAdmin"] = "yes";
+                        return RedirectToAction("Index", "Admin");
+                    }
                     return RedirectToAction("Index", "Home");
                 }
             }
-
-            ModelState.AddModelError("", "Invalid Email or Password");
             return View(model);
         }
 

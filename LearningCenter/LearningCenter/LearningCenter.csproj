@@ -225,6 +225,7 @@
     <Compile Include="Class.cs">
       <DependentUpon>LearningCenterDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\ClassesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -279,6 +280,7 @@
     <Content Include="Views\Classes\EnrolledClasses.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Classes\Error.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

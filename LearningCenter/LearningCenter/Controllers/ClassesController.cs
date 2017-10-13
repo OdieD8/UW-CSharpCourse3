@@ -63,7 +63,7 @@ namespace LearningCenter.Controllers
             {
                 db.Database.ExecuteSqlCommand($"INSERT INTO dbo.UserClass (ClassId, UserId) VALUES ({classId}, {userId})");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 TempData["errorMessage"] = "You are already enrolled in this class";
                 return RedirectToAction("Error", "Classes");
@@ -103,7 +103,7 @@ namespace LearningCenter.Controllers
             {
                 db.Database.ExecuteSqlCommand($"DELETE FROM dbo.UserClass WHERE ClassId = {classId} AND UserId = {userId}");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 TempData["errorMessage"] = "Error dropping class";
                 return RedirectToAction("Error", "Classes");
